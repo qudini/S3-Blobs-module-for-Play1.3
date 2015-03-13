@@ -119,8 +119,8 @@ public class S3Blob implements BinaryField, UserType, Serializable {
     @Override
     public Object nullSafeGet(ResultSet rs, String[] names,SessionImplementor owner, Object o) throws HibernateException, SQLException {
         String val = StringType.INSTANCE.nullSafeGet(rs, names[0], owner);
-        if (val == null || val.length() == 0 || !val.contains("|")) {
-            return new S3Blob();
+        if (val == null || val.length() == 0 || !val.contains("|") || val.equals("null|null")) {
+            return null;
         }
         return new S3Blob(val.split("[|]")[0], val.split("[|]")[1]);
     }

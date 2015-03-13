@@ -1,0 +1,8 @@
+/lib
+/eclipse
+/tmp
+/.settings
+/.classpath
+/.project
+.DS_Store
+.idea/
